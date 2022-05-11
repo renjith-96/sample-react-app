@@ -6,8 +6,8 @@ COPY package.json package-lock.json ./
 
 ENV NODE_OPTIONS=--max_old_space_size=4096
 
-COPY ZscalerRootCertificate-2048-SHA256.crt /usr/share/ca-certificates/
-RUN npm config set cafile /usr/share/ca-certificates/ZscalerRootCertificate-2048-SHA256.crt
+# COPY ZscalerRootCertificate-2048-SHA256.crt /usr/share/ca-certificates/
+# RUN npm config set cafile /usr/share/ca-certificates/ZscalerRootCertificate-2048-SHA256.crt
 # Install the dependencies and make the folder
 RUN npm install && mkdir /app && mv ./node_modules ./app
 
