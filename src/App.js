@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-do
 
 class App extends Component {
   render() {
-    console.log("Host URL"+process.env.PUBLIC_URL,"asdasdasd");
+    console.log("Host URL"+process.env.PUBLIC_URL,"as");
     return (
 
       <Router basename={process.env.PUBLIC_URL}>
