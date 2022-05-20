@@ -13,7 +13,7 @@ export default class Customers extends Component {
     }
   }
 
-  //function which is called the first time the component loads
+  //function which is called the first time the component loads test
   componentDidMount() {
     this.getCustomerData();
   }
