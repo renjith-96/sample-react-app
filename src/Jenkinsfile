@@ -1,6 +1,8 @@
 node {
     stage("scm chekcouit"){
-checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'PathRestriction', excludedRegions: '', includedRegions: 'src/.*']], userRemoteConfigs: [[credentialsId: 'quest', url: 'https://github.com/renjith-96/sample-react-app.git']]]    }
+        checkout scm
+    }
+// checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'PathRestriction', excludedRegions: '', includedRegions: 'src/.*']], userRemoteConfigs: [[credentialsId: 'quest', url: 'https://github.com/renjith-96/sample-react-app.git']]]    }
     stage("docker image build"){
         sh "docker build . -t smapleapp:${env.BUILD_NUMBER}"
     }
