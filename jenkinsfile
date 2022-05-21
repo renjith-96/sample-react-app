@@ -1,0 +1,11 @@
+node {
+    stage("scm chekcouit"){
+checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'PathRestriction', excludedRegions: '', includedRegions: 'src/.*']], userRemoteConfigs: [[credentialsId: 'quest', url: 'https://github.com/renjith-96/sample-react-app.git']]]    }
+    stage("docker image build"){
+        sh "docker build . -t smapleapp:${env.BUILD_NUMBER}"
+    }
+    stage("deploy") {
+         sh 'docker rm -f dv-frontend '
+         sh "docker run -d --name dv-frontend -p 9090:80 smapleapp:${env.BUILD_NUMBER}"
+    }
+}
